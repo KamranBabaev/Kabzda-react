@@ -13,9 +13,17 @@ const App = () => {
     let [swithOn, setSwithOn] = useState<boolean>(false)
     return (
         <div className="App">
-            <Accordion titleValue={'Меню'} collapsed={accordionCollapsed} onChange={() => {
-                setAccordionCollapsed(!accordionCollapsed)
-            }}/>
+            {/*<Accordion items={*/}
+            {/*    [{title: 'Nick', value: 1},*/}
+            {/*        {title: 'Sam', value: 2},*/}
+            {/*        {title: 'John', value: 3},]}*/}
+            {/*           titleValue={'Меню'}*/}
+            {/*           collapsed={accordionCollapsed}*/}
+            {/*           onChange={() => {*/}
+            {/*               setAccordionCollapsed(!accordionCollapsed)*/}
+            {/*           }}*/}
+            {/*           onClick={}*/}
+            {/*/>*/}
             <OnOff on={swithOn} onChange={(on) => {
                 setSwithOn(on)
             }}/>
