@@ -1,18 +1,31 @@
-import React, {useState} from "react";
+import React, {useReducer, useState} from "react";
 
 type AccordionPropsType = {
     titleValue: string
 }
-export const UncontrolledAccordion = (props: AccordionPropsType) => {
-let [collapsed, setCollapsed] = useState(false);
 
-    return (
-        <div>
-            <PageTitle title={props.titleValue} onClick={ () => {setCollapsed(!collapsed)} }/>
-            { !collapsed && <AccordionBody/> }
-        </div>
-    )
+type ActionType = {
+    type: string
 }
+
+export const reducer = (state: boolean, action: ActionType) => {
+    if (action.type === 'TOGGLE-COLLAPSED') {
+        return !state
+    }
+    return state
+}
+
+export const UncontrolledAccordion = (props: AccordionPropsType) => {
+
+let [collapsed, dispatch] = useReducer(reducer, false);
+
+    return (<div>
+            {/*<PageTitle title={props.titleValue} onClick={ () => {setCollapsed(!collapsed)} }/>*/}
+            <PageTitle title={props.titleValue} onClick={ () => { dispatch( {type: 'TOGGLE-COLLAPSED'} )} }/>
+            { !collapsed && <AccordionBody/> }
+        </div>)
+}
+
 
 type PageTitlePropsType = {
     title: string;
